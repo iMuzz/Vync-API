@@ -1,0 +1,143 @@
+---
+:users:
+- :id: 1
+  :username: Joyce
+  :device_id: 1
+  :devicetoken: 1
+  :created_at: 2014-01-01 10:15:27.621657000 -05:00
+- :id: 2
+  :username: Savannah
+  :device_id: 2
+  :devicetoken: 2
+  :created_at: 2014-01-02 10:15:27.621657000 -05:00
+- :id: 3
+  :username: Jeffrey
+  :device_id: 3
+  :devicetoken: 3
+  :created_at: 2014-01-03 10:15:27.621657000 -05:00
+- :id: 4
+  :username: Paula
+  :device_id: 4
+  :devicetoken: 4
+  :created_at: 2014-01-04 10:15:27.621657000 -05:00
+- :id: 5
+  :username: Mary
+  :device_id: 5
+  :devicetoken: 5
+  :created_at: 2014-01-05 10:15:27.621657000 -05:00
+- :id: 6
+  :username: Michelle
+  :device_id: 6
+  :devicetoken: 6
+  :created_at: 2014-01-06 10:15:27.621657000 -05:00
+- :id: 7
+  :username: Dennis
+  :device_id: 7
+  :devicetoken: 7
+  :created_at: 2014-01-07 10:15:27.621657000 -05:00
+
+:video_messages:
+- :id: 1
+  :reply_to_id: 1 # Initial message in chain
+  :sender_id: 1 # joyce
+  :recipient_id: 2 # savannah
+  :video_id: aaae3c85572dc9ad7cb77c2a638e3be24cc1b5bea9fdbb0b0299c9668475c534 # A video of joyce's cat
+  :created_at: 2014-02-01 08:00:00.000000000 -05:00
+- :id: 2
+  :reply_to_id: 1 # A video of joyce's cat
+  :sender_id: 2 # savannah
+  :recipient_id: 3 # jeffery
+  :video_id: bbbe3c85572dc9ad7cb77c2a638e3be24cc1b5bea9fdbb0b0299c9668475c534 # A video of savannah's iguana
+  :created_at: 2014-02-01 09:00:00.000000000 -05:00
+- :id: 3
+  :reply_to_id: 1 # A video of joyce's cat
+  :sender_id: 3 # jeffery
+  :recipient_id: 4 # paula
+  :video_id: ccce3c85572dc9ad7cb77c2a638e3be24cc1b5bea9fdbb0b0299c9668475c534 # A video of jeffery's ferret
+  :created_at: 2014-02-01 10:00:00.000000000 -05:00
+- :id: 4
+  :reply_to_id: 1 # A video of joyce's cat
+  :sender_id: 4 # paula
+  :recipient_id: 5 # mary
+  :video_id: ddde3c85572dc9ad7cb77c2a638e3be24cc1b5bea9fdbb0b0299c9668475c534 # A video of paula's poodle
+  :created_at: 2014-02-01 11:00:00.000000000 -05:00
+- :id: 5
+  :reply_to_id: 1 # A video of joyce's cat
+  :sender_id: 5 # mary
+  :recipient_id: 1 # joyce
+  :video_id: eee3c85572dc9ad7cb77c2a638e3be24cc1b5bea9fdbb0b0299c9668475c534 # A video of mary's mouse
+  :created_at: 2014-02-01 12:00:00.000000000 -05:00
+- :id: 6
+  :reply_to_id: 6 # Initial message in chain
+  :sender_id: 6 # michelle
+  :recipient_id: 7 # dennis
+  :video_id: fffe3c85572dc9ad7cb77c2a638e3be24cc1b5bea9fdbb0b0299c9668475c534 # A video of michelle reciting terrible poetry
+  :created_at: 2014-02-01 13:00:00.000000000 -05:00
+- :id: 7
+  :reply_to_id: 6 # A video of michelle reciting terrible poetry
+  :sender_id: 7 # dennis
+  :recipient_id: 1 # joyce
+  :video_id: fffe3c85572dc9ad7cb77c2a638e3be24cc1b5bea9fdbb0b0299c9668475c534 # A video of dennis plugging his ears
+  :created_at: 2014-02-01 14:00:00.000000000 -05:00
+:finished_chains:
+- :id: 1
+  :video_message_start_id: 1 # a video of joyce's cat
+:received_notifications:
+- :id: 1 # savannah receives a message from joyce
+  :user_id: 2 # savannah
+  :video_message_start_id: 1 # a video of joyce's cat
+- :id: 2 # jeffery receives a message from savannah
+  :user_id: 3 # jeffery
+  :video_message_start_id: 1 # a video of joyce's cat
+- :id: 3 # paula receives a message from jeffery
+  :user_id: 4 # paula
+  :video_message_start_id: 1 # a video of joyce's cat
+- :id: 4 # mary receives a message from paula
+  :user_id: 5 # mary
+  :video_message_start_id: 1 # a video of joyce's cat
+- :id: 5 # joyce receives a message from mary
+  :user_id: 1 # joyce
+  :video_message_start_id: 1 # a video of joyce's cat
+- :id: 6 # dennis receives a message from michelle
+  :user_id: 7 # dennis
+  :video_message_start_id: 6 # A video of michelle reciting terrible poetry
+- :id: 7 # joyce receives a message from dennis
+  :user_id: 1 # joyce
+  :video_message_start_id: 6 # A video of michelle reciting terrible poetry
+
+:chain_updated_notifications:
+- :id: 1 # when savannah sends on to jeff, joyce is notified
+  :user_id: 1 # joyce
+  :video_message_start_id: 1 # a video of joyce's cat
+
+- :id: 2 # when jeff sends on to paula, joyce is notified
+  :user_id: 1 # joyce
+  :video_message_start_id: 1 # a video of joyce's cat
+- :id: 3 # when jeff sends on to paula, savannah is both notified
+  :user_id: 2 # savannah
+  :video_message_start_id: 1 # a video of joyce's cat
+
+- :id: 4 # when paula sends on to mary, joyce is notified
+  :user_id: 1 # joyce
+  :video_message_start_id: 1 # a video of joyce's cat
+- :id: 5 # when paula sends on to mary, savannah is notified
+  :user_id: 2 # savannah
+  :video_message_start_id: 1 # a video of joyce's cat
+- :id: 6 # when paula sends on to mary, jeffery is notified
+  :user_id: 3 # jeffery
+  :video_message_start_id: 1 # a video of joyce's cat
+
+- :id: 7 # when mary sends on to joyce, joyce is notified
+  :user_id: 1 # joyce
+  :video_message_start_id: 1 # a video of joyce's cat
+- :id: 8 # when mary sends on to joyce, savannah is notified
+  :user_id: 2 # savannah
+  :video_message_start_id: 1 # a video of joyce's cat
+- :id: 9 # when mary sends on to joyce, jeffery is notified
+  :user_id: 3 # jeffery
+  :video_message_start_id: 1 # a video of joyce's cat
+- :id: 10 # when mary sends on to joyce, paula is notified
+  :user_id: 4 # paula
+  :video_message_start_id: 1 # a video of joyce's cat
+
+
