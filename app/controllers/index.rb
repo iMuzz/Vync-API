@@ -3,7 +3,7 @@ get '/' do
   erb :index
 end
 
-get '/allusers' do
+get '/users' do
   content_type :json
   User.all.to_json
 end
@@ -32,7 +32,7 @@ post '/upload' do
     new_vid.reply_to_id = params[:replyToID]
   end
   new_vid.save!
-  
+
   # Upload to s3!
   $s3.buckets.first.objects.create(video_id, tempfile)
 # notify all users on chain
