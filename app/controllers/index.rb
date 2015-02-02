@@ -8,7 +8,7 @@ get '/users' do
   User.all.to_json
 end
 
-get '/videomessages/:device_id/all' do
+get '/users/:device_id/vyncs' do
   content_type :json
   User.find_by(device_id: params[:device_id]).all_messages(params[:since].to_i).to_json
 end
