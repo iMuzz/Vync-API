@@ -1,7 +1,7 @@
 class VideoMessage < ActiveRecord::Base
   belongs_to :sender, class_name: "User", foreign_key: :user_id
   belongs_to :recipient, class_name: "User", foreign_key: :user_id
-
+  validates :video_id, uniqueness: true
 
   def is_first_message?
     reply_to_id == id
