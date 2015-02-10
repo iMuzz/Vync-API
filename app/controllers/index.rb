@@ -58,7 +58,7 @@ post '/users/:facebook_object_id/videos' do
   # end
   # # Notify the recipient of their new message
   # notify(recipient.devicetoken, "You have a new video, watch it now!")
-  "#{new_vid.id}-#{new_vid.created_at}-#{new_vid.reply_to_id}"
+  "#{new_vid.id},#{new_vid.created_at},#{new_vid.reply_to_id}"
 end
 
 # Currently downloading straight from S3, but we could re-implement this if we had safety concerns.
