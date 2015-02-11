@@ -10,16 +10,13 @@ end
   # user = User.create(devicetoken: params[:devicetoken], device_id: params[:deviceID], username: params[:username])
   # notify(params[:deviceToken], "Welcome to Chainer!")
 post "/users" do
-  user_params = params[:json].reject {|k| k == "id" || k == "is_me" }
-  puts "post user route. params=#{user_params}"
-
   # ignore id
-
-  user = User.new(user_params)
-  if user.save
-    user.id.to_s
+  user_params = params[:json].reject {|k| k == "id" || k == "is_me" }
+  if exists = User.find_by(email: user_params[:email])
+    exists.id.to_s
   else
-    "User with that name already exists"
+    user = User.create(user_params)
+    user.id.to_s
   end
 end
 
