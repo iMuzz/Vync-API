@@ -28,7 +28,9 @@ end
 post '/users/:facebook_object_id/videos' do
   tempfile = request.params["file"][:tempfile]
   # Upload to s3!
+  puts "before upload"
   $s3.buckets.first.objects.create(params[:json][:video_id], tempfile)
+  puts "after upload"
 
   # Instantiate a new videomessage object
   new_vid = VideoMessage.create(
@@ -55,6 +57,7 @@ post '/users/:facebook_object_id/videos' do
   # end
   # # Notify the recipient of their new message
   # notify(recipient.devicetoken, "You have a new video, watch it now!")
+  puts "ready to send back"
   "#{new_vid.id},#{new_vid.created_at},#{new_vid.reply_to_id}"
 end
 
