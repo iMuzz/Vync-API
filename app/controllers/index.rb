@@ -8,8 +8,7 @@ get '/users' do
 end
 
   # user = User.create(devicetoken: params[:devicetoken], device_id: params[:deviceID], username: params[:username])
-  # notify(params[:deviceToken], "Welcome to Chainer!")
-post "/users" do
+post '/users' do
   # ignore id
   user_params = params[:json].reject {|k| k == "id" || k == "is_me" }
   if exists = User.find_by(email: user_params[:email])
@@ -18,6 +17,15 @@ post "/users" do
     user = User.create(user_params)
     user.id.to_s
   end
+end
+
+put '/users/:facebook_object_id' do
+  user = User.find(params[:facebook_object_id])
+  if user.device_token != params[:device_token]
+    user.device_token = params[:device_token]
+    user.save!
+  end
+  notify(user.device_token, "Welcome to VYNC!")
 end
 
 get '/users/:facebook_object_id/videos' do
@@ -49,7 +57,7 @@ post '/users/:facebook_object_id/videos' do
   end
   new_vid.save!
 
-  
+
   # notify all users on chain. Needs to be redone
     notify_all(new_vid.to_be_notified(params[:json][:sender_id],params[:json][:recipient_id]), "Your video has been forwarded!")
   # Notify the recipient of their new message
