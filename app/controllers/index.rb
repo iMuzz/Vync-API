@@ -21,11 +21,11 @@ end
 
 put '/users/:facebook_object_id' do
   user = User.find_by(facebook_object_id: params[:facebook_object_id])
-  if user.device_token != params[:device_token]
-    user.device_token = params[:device_token]
+  if user.devicetoken != params[:devicetoken]
+    user.devicetoken = params[:devicetoken]
     user.save!
   end
-  notify(user.device_token, "Welcome to VYNC!")
+  notify(user.devicetoken, "Welcome to VYNC!")
 end
 
 get '/users/:facebook_object_id/videos' do
