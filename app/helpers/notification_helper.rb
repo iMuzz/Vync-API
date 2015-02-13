@@ -12,9 +12,9 @@ helpers do
     PUSHCLIENT.push(notification)
   end
 
-  def notify_all(array_of_users, notification_text)
-    array_of_users.each do |user|
-      notfiy(user.devicetoken, notification_text)
+  def notify_all(tokens, notification_text)
+    tokens.each do |user|
+      notfiy(token, notification_text)
     end
   end
 
