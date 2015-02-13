@@ -20,7 +20,7 @@ post '/users' do
 end
 
 put '/users/:facebook_object_id' do
-  user = User.find(params[:facebook_object_id])
+  user = User.find_by(facebook_object_id: params[:facebook_object_id])
   if user.device_token != params[:device_token]
     user.device_token = params[:device_token]
     user.save!
