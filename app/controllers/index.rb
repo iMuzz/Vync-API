@@ -45,7 +45,7 @@ post '/users/:facebook_object_id/videos' do
     new_vid.reply_to_id = new_vid.id
     new_vid.title = params[:json][:title]
   else
-    new_vid.reply_to_id = params[:reply_to_id]
+    new_vid.reply_to_id = params[:json][:reply_to_id]
   end
   new_vid.save!
 
