@@ -13,8 +13,8 @@ helpers do
   end
 
   def notify_all(tokens, notification_text)
-    tokens.each do |user|
-      notfiy(token, notification_text)
+    tokens.each do |token|
+      notify(token, notification_text)
     end
   end
 
