@@ -45,18 +45,16 @@ post '/users/:facebook_object_id/videos' do
     new_vid.reply_to_id = new_vid.id
     new_vid.title = params[:json][:title]
   else
-    new_vid.reply_to_id = params[:reply_to_id]
+    new_vid.reply_to_id = params[:json][:reply_to_id]
   end
   new_vid.save!
 
-# notify all users on chain. Needs to be redone
-  # user_ids = new_vid.chain.map {|video| [video.sender_id, video.recipient_id]}.flatten.uniq
-  # following_user_ids = user_ids.reject {|id| id == sender.id || id == recipient.id}
-  # following_user_ids.each do |id|
-  #   notify(User.find(id).devicetoken, "Your video has been forwarded!")
-  # end
-  # # Notify the recipient of their new message
-  # notify(recipient.devicetoken, "You have a new video, watch it now!")
+  
+  # notify all users on chain. Needs to be redone
+    notify_all(new_vid.to_be_notified(params[:json][:sender_id],params[:json][:recipient_id]), "Your video has been forwarded!")
+  # Notify the recipient of their new message
+    notify(recipient.devicetoken, "You have a new video, watch it now!")
+
   puts "ready to send back"
   "#{new_vid.id},#{new_vid.created_at},#{new_vid.reply_to_id}"
 end

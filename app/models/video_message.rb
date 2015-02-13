@@ -22,4 +22,11 @@ class VideoMessage < ActiveRecord::Base
   def self.chains(messages)
     where(reply_to_id: messages.pluck(:reply_to_id))
   end
+
+  def self.to_be_notified(senderID,recipientID)
+    user_ids = self.chain.map {|video| [video.sender_id, video.recipient_id]}.flatten.uniq
+    following_user_ids = user_ids.reject {|id| id == senderId || id == recipientId}
+    following_user_ids
+  end
+
 end
