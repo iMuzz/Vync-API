@@ -1,29 +1,20 @@
 helpers do
 
-  def notify(device_token, notification_text)
+  def notify(devicetoken, notification_text)
     notification = Grocer::Notification.new(
-      device_token:      device_token,
+      device_token:      devicetoken,
       alert:             notification_text,
       badge:             1,
       expiry:            Time.now + 60*60,     # optional; 0 is default, meaning the message is not stored
       identifier:        1234,                 # optional; must be an integer
       content_available: true                  # optional; any truthy value will set 'content-available' to 1
       )
-
     PUSHCLIENT.push(notification)
   end
-  def notify_all(arrayOfUsers, notification_text)
-    arrayOfUsers.each do |user| 
-      notification = Grocer::Notification.new(
-        device_token:      user.device_token,
-        alert:             notification_text,
-        badge:             1,
-        expiry:            Time.now + 60*60,     # optional; 0 is default, meaning the message is not stored
-        identifier:        1234,                 # optional; must be an integer
-        content_available: true                  # optional; any truthy value will set 'content-available' to 1
-        )
 
-      PUSHCLIENT.push(notification)
+  def notify_all(array_of_users, notification_text)
+    array_of_users.each do |user|
+      notfiy(user.devicetoken, notification_text)
     end
   end
 
