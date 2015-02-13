@@ -50,8 +50,8 @@ post '/users/:facebook_object_id/videos' do
   new_vid.save!
 
 # notify all users on chain. Needs to be redone
-    recipient=User.find(params[:json][:recipient_id])
     sender=User.find(params[:json][:sender_id])
+    recipient=User.find(params[:json][:recipient_id])
     notify_all(new_vid.to_be_notified(sender,recipient), "Your video has been forwarded!")
   # Notify the recipient of their new message
   notify(recipient.devicetoken, "You have a new video, watch it now!")
