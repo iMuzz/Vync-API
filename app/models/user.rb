@@ -5,13 +5,19 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
 
   def self.all_since(since = 0)
-    past = User.all.limit(since)
-    User.where.not(id: past.pluck(:id))
+    past = User.where("id > ?", since)
   end
 
   def all_messages(since = 0)
-    past = VideoMessage.all.limit(since)
-    past_chains = past.chains(messages.where(id < since))
+    # This more complicated set of queries is required because you
+    # might have a message with id 10 (since = 10), but then you
+    # are added to a chain that has messages at ids lower than 10.
+
+    # Get all videos that are already synced to the phone
+    past = VideoMessage.where("id <= ?", since)
+    # Get all the chains for those videos
+    past_chains = past.chains(messages.where("id <= ?", since))
+    # Return all my chains that aren't part of past chains
     VideoMessage.chains(messages).where.not(id: past_chains.pluck(:id))
   end
 
