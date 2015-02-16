@@ -41,7 +41,12 @@ AWS.config(
 
 $s3 = AWS::S3.new
 
-cert_path = production? ? StringIO.new(ENV[:APN_CERTIFICATE]) : "certificate.pem"
+fname = "tempfile.pem"
+File.open(fname, 'wb') do |fo|
+	fo.print $s3.buckets.first.objects.with_prefix('cert/certificate.pem').first.read
+end
+file = File.new(fname)
+cert_path = file 
 
 
 PUSHCLIENT = Grocer.pusher(
