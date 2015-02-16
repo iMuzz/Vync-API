@@ -20,6 +20,7 @@ require "sinatra/reloader" if development?
 require 'erb'
 require 'aws-sdk'
 require 'byebug'
+require 'stringio'
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 
@@ -51,8 +52,3 @@ PUSHCLIENT = Grocer.pusher(
   port:        2195,                     # optional
   retries:     3                         # optional
 )
-
-
-
-
-
