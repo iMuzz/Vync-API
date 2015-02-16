@@ -41,10 +41,10 @@ AWS.config(
 
 $s3 = AWS::S3.new
 
-cert_path = ENV['APN_CERTIFICATE']
+cert_string = ENV['APN_CERTIFICATE']
 
 PUSHCLIENT = Grocer.pusher(
-  certificate: cert_path,            # required
+  certificate: StringIO.new(cert_path),            # required
   passphrase:  "",                       # optional
   gateway:     "gateway.sandbox.push.apple.com", # optional; See note below.
   port:        2195,                     # optional
