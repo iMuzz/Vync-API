@@ -42,7 +42,7 @@ AWS.config(
 
 $s3 = AWS::S3.new
 
-cert_path = production? ? StringIO.new(ENV[:APN_CERTIFICATE]) : "certificate.pem"
+cert_path = production? ? StringIO.new(ENV['APN_CERTIFICATE']) : "certificate.pem"
 
 
 PUSHCLIENT = Grocer.pusher(
