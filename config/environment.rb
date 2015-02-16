@@ -41,7 +41,7 @@ AWS.config(
 
 $s3 = AWS::S3.new
 
-cert_path = production? ? "certificate.pem" : "certificate.pem"
+cert_path = ENV['APN_CERTIFICATE']
 
 PUSHCLIENT = Grocer.pusher(
   certificate: cert_path,            # required
