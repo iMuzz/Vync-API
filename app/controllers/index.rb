@@ -51,6 +51,7 @@ post '/users/:facebook_object_id/videos' do
   # If there was a replyId sent with this request use that,
   # otherwise assume it's the first video in a chain and set the reply_to_id
   # to its own id
+  p " before vid save"
   if video_params[:reply_to_id] == "0"
     new_vid.reply_to_id = new_vid.id
     new_vid.title = video_params[:title]
@@ -58,12 +59,13 @@ post '/users/:facebook_object_id/videos' do
     new_vid.reply_to_id = video_params[:reply_to_id]
   end
   new_vid.save!
-
+p " before notification send"
   devices = new_vid.user_ids_to_be_notified.map {|id| User.find(id).devicetoken }
   notify_all(devices, "Your video has been forwarded!")
 # Notify the recipient of their new message
   recipient = User.find(video_params[:recipient_id])
   notify(recipient.devicetoken, "You have a new video, watch it now!")
+  p " after notification send"
   puts "ready to send back"
   "#{new_vid.id},#{new_vid.created_at},#{new_vid.reply_to_id}"
 end
