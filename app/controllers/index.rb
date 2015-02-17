@@ -21,11 +21,11 @@ end
 put '/users/:facebook_object_id' do
   user = User.find_by(facebook_object_id: params[:facebook_object_id])
   p "put params= #{params}"
-  if user.devicetoken != params[:devicetoken]
-    user.devicetoken = params[:devicetoken]
+  if user.device_token != params[:device_token]
+    user.device_token = params[:device_token]
     user.save!
   end
-  notify(user.devicetoken, "Welcome to VYNC!")
+  notify(user.device_token, "Welcome to VYNC!")
   "success"
 end
 
@@ -60,11 +60,11 @@ post '/users/:facebook_object_id/videos' do
   end
   new_vid.save!
 p " before notification send"
-  devices = new_vid.user_ids_to_be_notified.map {|id| User.find(id).devicetoken }
+  devices = new_vid.user_ids_to_be_notified.map {|id| User.find(id).device_token }
   notify_all(devices, "Your video has been forwarded!")
 # Notify the recipient of their new message
   recipient = User.find(video_params[:recipient_id])
-  notify(recipient.devicetoken, "You have a new video, watch it now!")
+  notify(recipient.device_token, "You have a new video, watch it now!")
   p " after notification send"
   puts "ready to send back"
   "#{new_vid.id},#{new_vid.created_at},#{new_vid.reply_to_id}"
