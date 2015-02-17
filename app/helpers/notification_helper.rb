@@ -9,7 +9,8 @@ helpers do
       identifier:        1234,                 # optional; must be an integer
       content_available: true                  # optional; any truthy value will set 'content-available' to 1
       )
-    PUSHCLIENT.push(notification)
+    p notification
+      p PUSHCLIENT.push(notification)
   end
 
   def notify_all(tokens, notification_text)
