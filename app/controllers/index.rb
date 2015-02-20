@@ -20,12 +20,10 @@ end
 
 put '/users/:facebook_object_id' do
   user = User.find_by(facebook_object_id: params[:facebook_object_id])
-  p "put params= #{params}"
   if user.device_token != params[:device_token]
     user.device_token = params[:device_token]
     user.save!
   end
-  notify(user.device_token, "Welcome to VYNC!")
   "success"
 end
 
