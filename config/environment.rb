@@ -41,10 +41,11 @@ AWS.config(
   )
 
 $s3 = AWS::S3.new
+$s3b = $s3.buckets[ENV['S3_BUCKET']]
 
 fname = "tempfile.pem"
 File.open(fname, 'wb') do |fo|
-	p fo.print $s3.buckets.first.objects.with_prefix('cert/certificate.pem').first
+	fo.print $s3b.objects.with_prefix('cert/certificate.pem').first
 end
 file = File.new(fname)
 cert_path = file 

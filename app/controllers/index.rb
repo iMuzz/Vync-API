@@ -37,7 +37,7 @@ post '/users/:facebook_object_id/videos' do
   video_params = params[:json]
   # Upload to s3 if it doesn't already exist
   return "Already There" if VideoMessage.find_by(video_id: video_params[:video_id])
-  $s3.buckets.first.objects.create(video_params[:video_id], tempfile)
+  $s3b.objects.create(video_params[:video_id], tempfile)
   # Instantiate a new videomessage object
   new_vid = VideoMessage.create(
     sender_id: video_params[:sender_id],
