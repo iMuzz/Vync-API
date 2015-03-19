@@ -95,6 +95,7 @@ DEPENDENCIES
   dotenv
   faker
   grocer
+  json
   pg
   rake
   rspec

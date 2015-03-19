@@ -1,7 +1,6 @@
 <script src="/js/shared.js"></script>
-  <h1>Shared Route -- </h1>
-  <h2>Params:  <%=@shared.source%></h2>
+  <h1 id="shared-head">VYNC</h1>
 
-  <video src=<%=@shared.source%> type="video/mov" autoplay>
+  <video type="video/mov" id="player" data-id=<%=params[:share_id]%>></video>
 
-  </video>
+  
