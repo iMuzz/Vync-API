@@ -1,16 +1,46 @@
+@font-face {
+	font-family: egypt;
+	src: url(egypt.ttf);
+}
+
+
 .container {
-  margin: 20px auto;
-  width: 600px;
-  padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+	margin: 20px auto;
+	width: 600px;
+	padding: 0px 20px 20px 20px;
+	border: 1px dotted black;
 }
 th {
-  text-align: left;
+	text-align: left;
+}
+
+#player {
+	margin: auto;
+	height: 500px;
+	width: 500px;
+	  display: inline-block;
+}
+
+#shared-head {
+	font-size: 5em;
+	color: #73A1FF;
+	font-family: egypt;
+	text-align: center;
+	margin: 0 auto;
+}
+#shared-head span {
+	color: #F7D737;
 }
 
 
-#player {
-	height: 500px;
-	width: 500px
+.body {
+	margin: 0px;
+	background-color: black;
+	height:1000px
+}
 
+#video-holder {
+	margin: 0 auto;
+	width: 100%;
+  text-align: center;
 }
