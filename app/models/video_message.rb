@@ -30,7 +30,7 @@ class VideoMessage < ActiveRecord::Base
   end
 
   def source
-    "https://s3-us-west-2.amazonaws.com/telephono/#{self.video_id}"
+    "https://s3-us-west-2.amazonaws.com/telephono/#{self.video_id}.mov"
   end
 
   def get_sources
