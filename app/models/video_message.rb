@@ -29,4 +29,19 @@ class VideoMessage < ActiveRecord::Base
     ids
   end
 
+  def source
+    "https://s3-us-west-2.amazonaws.com/telephono/#{self.video_id}.mov"
+  end
+
+  def get_sources
+    chain = VideoMessage.where(reply_to_id: reply_to_id)
+    sources = []
+    chain.each do |vync|
+      sources << vync.source 
+    end
+    sources
+  end
+
+
+
 end

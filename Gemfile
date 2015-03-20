@@ -18,6 +18,7 @@ gem 'rake'
 gem 'byebug'
 gem 'shotgun'
 gem 'grocer'
+gem 'json'
 
 group :test do
   gem 'faker'

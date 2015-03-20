@@ -1,9 +1,114 @@
+@font-face {
+	font-family: egypt;
+	src: url(egypt.ttf);
+}
+
+
 .container {
-  margin: 20px auto;
-  width: 600px;
-  padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+	margin: 20px auto;
+	width: 600px;
+	padding: 0px 20px 20px 20px;
+	border: 1px dotted black;
 }
 th {
-  text-align: left;
+	text-align: left;
 }
+
+#player {
+	margin: auto;
+	height: 500px;
+	width: 500px;
+	  display: inline-block;
+}
+
+#shared-head {
+	font-size: 5em;
+	color: #73A1FF;
+	font-family: egypt;
+	text-align: center;
+	margin: 0 auto;
+}
+#shared-head span {
+	color: #F7D737;
+}
+
+
+.body {
+	margin: 0px;
+	padding: 0px;
+	background-color: black;
+	height:1000px
+}
+
+#video-holder {
+	margin: 0 auto;
+	width: 100%;
+  text-align: center;
+}
+
+
+
+/*None custom*/
+
+.list-inline {
+  padding-left: 0;
+  margin-left: -5px;
+  list-style: none;
+  margin: 0px;
+  padding: 5px
+}
+.list-inline > li {
+  display: inline-block;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+
+ul.social-buttons {
+    margin-bottom: 0;
+}
+
+ul.social-buttons li a {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    font-size: 20px;
+    line-height: 40px;
+    outline: 0;
+    color: #fff;
+    background-color: #222;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    transition: all .3s;
+}
+
+ul.social-buttons li a:hover,
+ul.social-buttons li a:focus,
+ul.social-buttons li a:active {
+    background-color: #73A1FF;
+}
+
+footer {
+    text-align: center;
+    height: 50px;
+    background-color: #F7D737
+}
+
+footer span.copyright {
+    text-transform: uppercase;
+    text-transform: none;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 40px;
+}
+
+footer ul.quicklinks {
+    margin-bottom: 0;
+    text-transform: uppercase;
+    text-transform: none;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 40px;
+}
+
+
+

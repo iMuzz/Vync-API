@@ -1,3 +1,4 @@
+
 get '/' do
   erb :index
 end
@@ -66,3 +67,18 @@ end
 # get '/download' do
 #   send_file $s3.buckets.first.objects[params[:download]].read, :type => :mov
 # end
+
+get '/shared' do
+    # p params
+    content_type :json
+    sources = VideoMessage.find(params[:id]).get_sources
+      sources.to_json
+end
+
+get '/shared/:share_id' do
+  @shared = VideoMessage.find(params[:share_id])
+  erb :shared
+end
+
+
+

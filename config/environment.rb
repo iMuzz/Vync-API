@@ -21,6 +21,7 @@ require 'erb'
 require 'aws-sdk'
 require 'byebug'
 require 'stringio'
+require 'json'
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 
